@@ -21,6 +21,8 @@ app.get('/generate', (req, res) => {
     res.send(result);
 });
 
+app.use(express.static('static'));
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
