@@ -1,9 +1,9 @@
 const express = require('express');
 
 const app = express();
-const port = 3000;
+const port = 34612;
 
-import { rateLimit } from 'express-rate-limit'
+const rateLimit = require('express-rate-limit');
 
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
@@ -16,7 +16,7 @@ const limiter = rateLimit({
 // Apply the rate limiting middleware to all requests.
 app.use(limiter)
 
-app.get('/', (req, res) => {
+app.get('/generate', (req, res) => {
     const result = generate();
     res.send(result);
 });
@@ -26,7 +26,7 @@ app.listen(port, () => {
 });
 
 col = ["Blue","Azure","Beige","Violet","Crimson","Cyan","Golden","Grey","Green","Khaki","Magenta","Olive","Orange","Red","Slate","Pink","Turquoise","Fuchsia","Indigo","Lavender","Steel","Iron","Silver","Bronze","Maroon","Purple","Orchid","Plum","Rose","Teal","Thistle"]
-peaks = ["Everest","Crown","McKinley","Kilimanjaro","Logan","Elbrus","Blanc","Rainier","Fairweather","Stanley","Erebus","Fuji","Cook","Blackburn","Hayes","Etna","Waddington","Whitney","Lucania","Stephenson","Wilhelm","Monarch","Robson","Elbert","Olympus","Kosciuszko","Taranaki","Rosa","Washington","Zugspitze","Radomir","Nevis","Snowdon","Matterhorn","Eiger","Tatra","Beskid","Skrzyczne","Klimczok","Magura","Szyndzielnia","Czantoria","Muronka"]
+peaks = ["Everest","Crown","McKinley","Kilimanjaro","Logan","Elbrus","Blanc","Rainier","Fairweather","Stanley","Erebus","Fuji","Cook","Blackburn","Hayes","Etna","Waddington","Whitney","Lucania","Stephenson","Wilhelm","Monarch","Robson","Elbert","Olympus","Taranaki","Rosa","Washington","Zugspitze","Radomir","Nevis","Snowdon","Matterhorn","Eiger","Tatra","Beskid","Magura","Muronka"]
 
 function generate() {
     const randomCol = col[Math.floor(Math.random() * col.length)];
